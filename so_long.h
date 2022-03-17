@@ -24,5 +24,6 @@ char **ft_fill_map(char *av);
 int	check_legit_map(char *av);
 int ft_strlendouble(char **str);
 int check_legit_map2(t_data map);
-int ft_strlenindouble(char **str);
+int ft_strlenindouble(char **str, int i);
+int check_maplines(char **str);
 #endif

@@ -1,6 +1,7 @@
 SRCS	=	so_long.c\
 			check_map.c\
 			utils.c\
+			check_lmap.c\
 
 
 OBJS = ${SRCS:.c=.o}
@@ -9,6 +10,7 @@ CC	=	gcc
 
 CFLAGS = -Wall -Werror -Wextra -g
 LDFLAGS = -L libft -lft
+MLXFLAG	=	-L minilibx-linux -lmlx -lXext -lX11
 
 NAME = so_long
 
@@ -20,7 +22,7 @@ all : ${NAME}
 
 ${NAME} :	${OBJS} $(LIBFT)
 	@$(MAKE) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
+	@$(CC) ${MLXFLAG} $(CFLAGS) $(OBJS) $(LDFLAGS)  -o $@
 	@echo "Ca arrive..."
 
 %.o: %.c

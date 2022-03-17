@@ -7,6 +7,8 @@ int	check_legit_map(char *av)
     map.i = 0;
   //  map.j = 0;
     map.map = ft_fill_map(av);
+    if (!check_maplines(map.map))
+        return (0);
     map.len = ft_strlendouble(map.map) - 1;
    // ft_printf("%d", map.len);
     while (map.map[0][map.i])
@@ -22,7 +24,8 @@ int	check_legit_map(char *av)
             return (0);
         map.i++;
     }
-    check_legit_map2(map);
+    if (!check_legit_map2(map))
+        return (0);
     return (1);
 }
 int check_legit_map2(t_data map)
@@ -35,13 +38,11 @@ int check_legit_map2(t_data map)
             return (0);
         map.i++;
     }
-    map.i = ft_strlenindouble(map.map) - 1;
-  //  ft_printf("%d", map.len);
+    map.i = ft_strlenindouble(map.map, 0) - 1;
     while (map.j < map.len)
     {
         if (map.map[map.j][map.i] != '1')
             return (0);
-        ft_printf("%s", map.map[map.j][map.i]);
         map.j++;
     }
     return (1);
