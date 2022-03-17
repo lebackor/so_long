@@ -13,9 +13,16 @@ typedef struct s_data{
     int len;
     int fd;
     int i;
+    int j;
     char *av;
     char *str;
-    char ***map;
+    char **map;
 } t_data;
 
+int	get_len_file(char *av);
+char **ft_fill_map(char *av);
+int	check_legit_map(char *av);
+int ft_strlendouble(char **str);
+int check_legit_map2(t_data map);
+int ft_strlenindouble(char **str);
 #endif

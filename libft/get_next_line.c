@@ -48,7 +48,6 @@ char	*str_n(char *str, char *buffer, char *new_line, int i)
 		if (*str == '\0' && *new_line == '\0')
 		{
 			free(buffer);
-			free(str);
 			free(new_line);
 			return (NULL);
 		}
@@ -56,7 +55,6 @@ char	*str_n(char *str, char *buffer, char *new_line, int i)
 		free(buffer);
 		return (new_line);
 	}
-	free(str);
 	free(buffer);
 	free(new_line);
 	return (NULL);
@@ -86,6 +84,5 @@ char	*get_next_line(int fd)
 	}
 	new_line = str_endcpy(str, new_line);
 	free(buffer);
-	//ft_printf("%s", new_line);
 	return (new_line);
 }

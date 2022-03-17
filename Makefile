@@ -1,4 +1,6 @@
 SRCS	=	so_long.c\
+			check_map.c\
+			utils.c\
 
 
 OBJS = ${SRCS:.c=.o}
