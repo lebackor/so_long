@@ -22,11 +22,11 @@ all : ${NAME}
 
 ${NAME} :	${OBJS} $(LIBFT)
 	@$(MAKE) $(LIBFT)
-	@$(CC) ${MLXFLAG} $(CFLAGS) $(OBJS) $(LDFLAGS)  -o $@
+	@$(CC) $(CFLAGS) $(OBJS) ${MLXFLAG} $(LDFLAGS)  -o $@
 	@echo "Ca arrive..."
 
 %.o: %.c
-	@${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o} ${MLXFLAG}
 
 
 $(LIBFT)	:

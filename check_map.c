@@ -10,7 +10,14 @@ int	check_legit_map(char *av)
     if (!check_maplines(map.map))
         return (0);
     map.len = ft_strlendouble(map.map) - 1;
-   // ft_printf("%d", map.len);
+    if (!check_legit_map2(map) || !check_legit_map1(map) || !check_pec(map.map))
+        return (0);
+    ft_free_table(map.map);
+    return (1);
+}
+
+int check_legit_map1(t_data map)
+{
     while (map.map[0][map.i])
     {
         if (map.map[0][map.i] != '1')
@@ -24,10 +31,9 @@ int	check_legit_map(char *av)
             return (0);
         map.i++;
     }
-    if (!check_legit_map2(map))
-        return (0);
     return (1);
 }
+
 int check_legit_map2(t_data map)
 {
     map.i = 0;
@@ -55,9 +61,11 @@ char **ft_fill_map(char *av)
 	t_data fd;
 
 	j = 0;
+//    fd.i = 0;
 	fd.i = get_len_file(av);
-	str = ft_calloc(fd.i, sizeof(char *));
-	fd.fd = open(av, O_RDONLY);
+	//str = ft_calloc(fd.i, sizeof(char *));
+	str = malloc(sizeof(char *) * (fd.i + 1));
+    fd.fd = open(av, O_RDONLY);
 	while (j < fd.i)
 	{
 		str[j] = get_next_line(fd.fd);
@@ -77,13 +85,15 @@ int	get_len_file(char *av)
 
 	i = 0;
 	fd.fd = open(av, O_RDONLY);
-	fd.str = get_next_line(fd.fd);
+    fd.str = get_next_line(fd.fd);
 	while (fd.str != NULL)
 	{
+        //if (fd.str)
 		free(fd.str);
 		fd.str = get_next_line(fd.fd);
 		i++;
 	}
+    free(fd.str);
 	close(fd.fd);
 	return (i);
 }

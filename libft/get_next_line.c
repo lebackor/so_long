@@ -6,7 +6,7 @@
 /*   By: lebackor <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:54:13 by lebackor          #+#    #+#             */
-/*   Updated: 2021/12/14 19:02:16 by lebackor         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:00:00 by lebackor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ char	*get_next_line(int fd)
 
 	i = 1;
 	if (!str)
-		str = malloc(sizeof(str) * BUFFER_SIZE + 1);
-	buffer = malloc(sizeof(buffer) * BUFFER_SIZE + 1);
+		str = malloc(sizeof(str) * (BUFFER_SIZE + 1));
+	buffer = malloc(sizeof(buffer) * (BUFFER_SIZE + 1));
 	new_line = ft_strdup(str);
 	while (ft_search_n(new_line) && i > 0)
 	{
