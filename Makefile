@@ -2,6 +2,7 @@ SRCS	=	so_long.c\
 			check_map.c\
 			utils.c\
 			check_lmap.c\
+			windowsnstuff.c\
 
 
 OBJS = ${SRCS:.c=.o}

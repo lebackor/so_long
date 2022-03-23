@@ -69,7 +69,7 @@ char **ft_fill_map(char *av)
 	while (j < fd.i)
 	{
 		str[j] = get_next_line(fd.fd);
-		printf("%s\n", str[j]);
+		//printf("%s\n", str[j]);
 		j++;
 	}
     str[j] = NULL;
