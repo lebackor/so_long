@@ -3,6 +3,7 @@ SRCS	=	so_long.c\
 			utils.c\
 			check_lmap.c\
 			windowsnstuff.c\
+			searching.c\
 
 
 OBJS = ${SRCS:.c=.o}

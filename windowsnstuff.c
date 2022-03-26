@@ -16,18 +16,18 @@ void    put_win(t_data ptr, char *av)
 //	ptr.addr = mlx_get_data_addr(ptr.img, &ptr.bits_per_pixel, &ptr.line_length,
 //								&ptr.endian);
 	put_floor(ptr);
+	ft_search_char(ptr);
 //	mlx_put_image_to_window(ptr.ptr, ptr.winptr, ptr.img, 0, 0);
 	free(ptr.map);
 }
 
 void	put_floor(t_data ptr)
 {
-	char	*relative_path = "./stone.xpm";
-	
+	ptr.relative_path = "./grass.xpm";
 	ptr.j = 0;
 	ptr.img_height = 0;
 	ptr.img_width = 0;
-	ptr.img = mlx_xpm_file_to_image(ptr.ptr, relative_path, &ptr.img_width, &ptr.img_height);
+	ptr.img = mlx_xpm_file_to_image(ptr.ptr, ptr.relative_path, &ptr.img_width, &ptr.img_height);
 	mlx_put_image_to_window(ptr.ptr, ptr.winptr, ptr.img, 0, 0);
 	while(ptr.j < ptr.y * 100)
 	{	
@@ -38,7 +38,7 @@ void	put_floor(t_data ptr)
 			ptr.x = ptr.x + 50;
 		}
 		ptr.j = ptr.j + 50;
-
 	}
+	ft_put_wall(ptr);
 //	mlx_put_image_to_window(ptr.ptr, ptr.winptr, ptr.img, 100, 1000);
 }

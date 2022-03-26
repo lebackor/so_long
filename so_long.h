@@ -25,6 +25,7 @@ typedef struct s_data{
     char *av;
     char *str;
     char **map;
+    char	*relative_path;
     	int		img_width ;
 	int		img_height;
 } t_data;
@@ -41,5 +42,7 @@ int check_pec(char **str);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void    put_win(t_data ptr, char *av);
 void	put_floor(t_data ptr);
-
+void    ft_search_char(t_data ptr);
+void    ft_put_chr(t_data ptr, t_data win);
+void    ft_put_wall(t_data ptr);
 #endif
