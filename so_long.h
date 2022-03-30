@@ -44,5 +44,11 @@ void    put_win(t_data ptr, char *av);
 void	put_floor(t_data ptr);
 void    ft_search_char(t_data ptr);
 void    ft_put_chr(t_data ptr, t_data win);
-void    ft_put_wall(t_data ptr);
+//void    ft_put_wall(t_data ptr);
+void    ft_put_collec(t_data ptr, t_data win);
+void    ft_search_collec(t_data ptr);
+void    ft_search_wall(t_data ptr);
+void    ft_search_exit(t_data ptr);
+void    ft_put_exit(t_data ptr, t_data win);
+
 #endif

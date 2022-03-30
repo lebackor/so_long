@@ -11,13 +11,14 @@ void    put_win(t_data ptr, char *av)
 	ptr.map = ft_fill_map(av);
 	ptr.i = ft_strlenindouble(ptr.map, 0);
 	ptr.y = ft_strlendouble(ptr.map);
-	ptr.winptr = mlx_new_window(ptr.ptr, 100 * ptr.i, 100 * ptr.y, "so_long");
+	ptr.winptr = mlx_new_window(ptr.ptr, 50 * ptr.i, 50 * ptr.y, "so_long");
 //	ptr.img = mlx_new_image(ptr.ptr, 1980, 800);
 //	ptr.addr = mlx_get_data_addr(ptr.img, &ptr.bits_per_pixel, &ptr.line_length,
 //								&ptr.endian);
 	put_floor(ptr);
 	ft_search_char(ptr);
-//	mlx_put_image_to_window(ptr.ptr, ptr.winptr, ptr.img, 0, 0);
+	ft_search_collec(ptr);
+	ft_search_exit(ptr);
 	free(ptr.map);
 }
 
@@ -39,6 +40,7 @@ void	put_floor(t_data ptr)
 		}
 		ptr.j = ptr.j + 50;
 	}
-	ft_put_wall(ptr);
+	//ft_put_wall(ptr);
+	ft_search_wall(ptr);
 //	mlx_put_image_to_window(ptr.ptr, ptr.winptr, ptr.img, 100, 1000);
 }
