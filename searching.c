@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void    ft_search_char(t_data ptr)
+void    *ft_search_char(t_data ptr)
 {
     t_data  pt;
 
@@ -13,14 +13,14 @@ void    ft_search_char(t_data ptr)
         {
             if (ptr.map[pt.i][pt.j] == 'P')
             {
-                ft_put_chr(pt, ptr);
-                return ;
+                pt.perso = ft_put_chr(pt, ptr);
+                return (pt.perso);
             }
             pt.j++;
         }
         pt.i++;
     }
-    return ;
+    return (NULL);
 }
 
 void    ft_search_collec(t_data ptr)

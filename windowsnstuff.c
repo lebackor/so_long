@@ -16,9 +16,11 @@ void    put_win(t_data ptr, char *av)
 //	ptr.addr = mlx_get_data_addr(ptr.img, &ptr.bits_per_pixel, &ptr.line_length,
 //								&ptr.endian);
 	put_floor(ptr);
-	ft_search_char(ptr);
+	ptr.perso = ft_search_char(ptr);
+	//ft_printf("%p", ptr.perso);
 	ft_search_collec(ptr);
 	ft_search_exit(ptr);
+	mlx_hook(ptr.winptr, 2, 1L<<0, putchr, &ptr);
 	free(ptr.map);
 }
 

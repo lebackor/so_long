@@ -1,5 +1,5 @@
 #include "so_long.h"
-void    ft_put_chr(t_data ptr, t_data win)
+void    *ft_put_chr(t_data ptr, t_data win)
 {
     ptr.relative_path = "./itachi.xpm";
 	//ptr.j = 0;
@@ -7,18 +7,11 @@ void    ft_put_chr(t_data ptr, t_data win)
 	ptr.img_width = 0;
 	ptr.img = mlx_xpm_file_to_image(win.ptr, ptr.relative_path, &ptr.img_width, &ptr.img_height);
 	mlx_put_image_to_window(win.ptr, win.winptr, ptr.img, (ptr.j * 50) , (ptr.i * 50));
+	//printf("%p", ptr.img);
+	return (ptr.img);
 }
 
-void    ft_put_exit(t_data ptr, t_data win)
-{
-    ptr.relative_path = "./door.xpm";
-	//ptr.j = 0;
-	ptr.img_height = 0;
-	ptr.img_width = 0;
-	ft_printf("%d %d", ptr.i, ptr.j);
-	ptr.img = mlx_xpm_file_to_image(win.ptr, ptr.relative_path, &ptr.img_width, &ptr.img_height);
-	mlx_put_image_to_window(win.ptr, win.winptr, ptr.img, (ptr.j * 50) , (ptr.i * 50));
-}
+
 /*
 void    ft_put_wall(t_data ptr)
 {
@@ -84,4 +77,14 @@ void    ft_search_wall(t_data ptr)
         pt.i++;
     }
     return ;
+}
+void    ft_put_exit(t_data ptr, t_data win)
+{
+    ptr.relative_path = "./coin.xpm";
+	//ptr.j = 0;
+	ptr.img_height = 0;
+	ptr.img_width = 0;
+	//ft_printf("%d %d", ptr.i, ptr.j);
+	ptr.img = mlx_xpm_file_to_image(win.ptr, ptr.relative_path, &ptr.img_width, &ptr.img_height);
+	mlx_put_image_to_window(win.ptr, win.winptr, ptr.img, (ptr.j * 50) , (ptr.i * 50));
 }

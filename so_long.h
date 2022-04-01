@@ -26,8 +26,10 @@ typedef struct s_data{
     char *str;
     char **map;
     char	*relative_path;
-    	int		img_width ;
+    int		img_width ;
 	int		img_height;
+    void    *perso;
+
 } t_data;
 
 int	get_len_file(char *av);
@@ -42,13 +44,14 @@ int check_pec(char **str);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void    put_win(t_data ptr, char *av);
 void	put_floor(t_data ptr);
-void    ft_search_char(t_data ptr);
-void    ft_put_chr(t_data ptr, t_data win);
-//void    ft_put_wall(t_data ptr);
+void    *ft_search_char(t_data ptr);
+void    *ft_put_chr(t_data ptr, t_data win);
+void    ft_put_wall1(t_data ptr, t_data win);
 void    ft_put_collec(t_data ptr, t_data win);
 void    ft_search_collec(t_data ptr);
 void    ft_search_wall(t_data ptr);
 void    ft_search_exit(t_data ptr);
 void    ft_put_exit(t_data ptr, t_data win);
+int	putchr(int keycode, t_data win);
 
 #endif
