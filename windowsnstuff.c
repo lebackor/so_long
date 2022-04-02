@@ -21,7 +21,8 @@ void    put_win(t_data ptr, char *av)
 	ft_search_collec(ptr);
 	ft_search_exit(ptr);
 	mlx_hook(ptr.winptr, 2, 1L<<0, putchr, &ptr);
-	free(ptr.map);
+		///ft_printf("%p", ptr->ptr);
+	//free(ptr.map);
 }
 
 void	put_floor(t_data ptr)
