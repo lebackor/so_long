@@ -1,20 +1,23 @@
 #include "so_long.h"
 
-void    *ft_search_char(t_data ptr)
+void    *ft_search_char(t_data *ptr)
 {
     t_data  pt;
 
     pt.i = 0;
     pt.j = 0;
-    while (pt.i < ft_strlendouble(ptr.map))
+
+   
+    while (pt.i < ft_strlendouble(ptr->map))
     {
         pt.j = 0;
-        while (pt.j < ft_strlenindouble(ptr.map, pt.i))
+        while (pt.j < ft_strlenindouble(ptr->map, pt.i))
         {
-            if (ptr.map[pt.i][pt.j] == 'P')
+            if (ptr->map[pt.i][pt.j] == 'P')
             {
-                pt.perso = ft_put_chr(pt, ptr);
-                return (pt.perso);
+                ptr->i = pt.i;
+                ptr->j = pt.j;
+                ft_put_chr(&pt, ptr);
             }
             pt.j++;
         }
@@ -23,19 +26,23 @@ void    *ft_search_char(t_data ptr)
     return (NULL);
 }
 
-void    ft_search_collec(t_data ptr)
+void    ft_search_collec(t_data *ptr)
 {
     t_data  pt;
 
     pt.i = 0;
     pt.j = 0;
-    while (pt.i < ft_strlendouble(ptr.map))
+    ptr->maxcoin = 0;
+    while (pt.i < ft_strlendouble(ptr->map))
     {
         pt.j = 0;
-        while (pt.j < ft_strlenindouble(ptr.map, pt.i))
+        while (pt.j < ft_strlenindouble(ptr->map, pt.i))
         {
-            if (ptr.map[pt.i][pt.j] == 'C')
-                ft_put_collec(pt, ptr);
+            if (ptr->map[pt.i][pt.j] == 'C')
+            {
+                ft_put_collec(&pt, ptr);
+                ptr->maxcoin++;
+            }
             pt.j++;
         }
         pt.i++;
@@ -43,19 +50,19 @@ void    ft_search_collec(t_data ptr)
     return ;
 }
 
-void    ft_search_exit(t_data ptr)
+void    ft_search_exit(t_data *ptr)
 {
     t_data  pt;
 
     pt.i = 0;
     pt.j = 0;
-    while (pt.i < ft_strlendouble(ptr.map))
+    while (pt.i < ft_strlendouble(ptr->map))
     {
         pt.j = 0;
-        while (pt.j < ft_strlenindouble(ptr.map, pt.i))
+        while (pt.j < ft_strlenindouble(ptr->map, pt.i))
         {
-            if (ptr.map[pt.i][pt.j] == 'E')
-                ft_put_exit(pt, ptr);
+            if (ptr->map[pt.i][pt.j] == 'E')
+                ft_put_exit(&pt, ptr);
             pt.j++;
         }
         pt.i++;

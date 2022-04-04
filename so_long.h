@@ -21,6 +21,8 @@ typedef struct s_data{
     int fd;
     int i;
     int j;
+    int coin;
+    int maxcoin;
     char *addr;
     char *av;
     char *str;
@@ -29,6 +31,8 @@ typedef struct s_data{
     int		img_width ;
 	int		img_height;
     void    *perso;
+    int     newposj;
+    int     newposi;
 
 } t_data;
 
@@ -42,16 +46,16 @@ int check_maplines(char **str);
 int check_legit_map1(t_data map);
 int check_pec(char **str);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void    put_win(t_data ptr, char *av);
-void	put_floor(t_data ptr);
-void    *ft_search_char(t_data ptr);
-void    *ft_put_chr(t_data ptr, t_data win);
-void    ft_put_wall1(t_data ptr, t_data win);
-void    ft_put_collec(t_data ptr, t_data win);
-void    ft_search_collec(t_data ptr);
-void    ft_search_wall(t_data ptr);
-void    ft_search_exit(t_data ptr);
-void    ft_put_exit(t_data ptr, t_data win);
+void    put_win(t_data *ptr);
+void	put_floor(t_data *ptr);
+void    *ft_search_char(t_data *ptr);
+void    *ft_put_chr(t_data *ptr, t_data *win);
+void    ft_put_wall1(t_data *ptr, t_data *win);
+void    ft_put_collec(t_data *ptr, t_data *win);
+void    ft_search_collec(t_data *ptr);
+void    ft_search_wall(t_data *ptr);
+void    ft_search_exit(t_data *ptr);
+void    ft_put_exit(t_data *ptr, t_data *win);
 int	putchr(int keycode, t_data *ptr);
 
 #endif
