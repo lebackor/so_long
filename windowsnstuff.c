@@ -1,6 +1,5 @@
 #include "so_long.h"
 
-
 void    put_win(t_data *ptr)
 {
 	
@@ -30,7 +29,4 @@ void	put_floor(t_data *ptr)
 		}
 		ptr->j = ptr->j + 50;
 	}
-	//ft_put_wall(ptr);
-	
-//	mlx_put_image_to_window(ptr.ptr, ptr.winptr, ptr.img, 100, 1000);
 }

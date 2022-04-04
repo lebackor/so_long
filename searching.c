@@ -7,7 +7,6 @@ void    *ft_search_char(t_data *ptr)
     pt.i = 0;
     pt.j = 0;
 
-   
     while (pt.i < ft_strlendouble(ptr->map))
     {
         pt.j = 0;

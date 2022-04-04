@@ -1,21 +1,5 @@
 
 #include "so_long.h"
-/*
-int	putchr(int keycode, t_data *ptr)
-{
-	if (!keycode)
-		ft_printf("y pas wesh");
-
-    ptr->relative_path = "./itachi.xpm";
-	ptr->img_height = 0;
-	ptr->img_width = 0;
-
-	ptr->img = mlx_xpm_file_to_image(&ptr->ptr, ptr->relative_path, &ptr->img_width, &ptr->img_height);
-
-	mlx_put_image_to_window(&ptr->ptr, ptr->winptr, ptr->img, (1 * 50) , (1 * 50));
-
-	return (0);
-}*/
 
 int	putchr(int keycode, t_data *ptr)
 {
@@ -27,106 +11,79 @@ int	putchr(int keycode, t_data *ptr)
 		{
 			ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj) - 1] = '0';
 			ptr->coin++;
-			printf("COIN DETECTED\n");
-		}
-		if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj) - 1] == 'E')
-		{
-			if (ptr->coin == ptr->maxcoin)
-				exit(1);
-				//fonctionexit
+			ft_printf("Coin collected : %d\n", ptr->coin);
 		}
 		if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
 			ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./coin.xpm", &ptr->img_width, &ptr->img_height);
 		mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
 		ptr->newposj =ptr->newposj - 1 ;
 		ft_search_char(ptr);
+		ptr->movements++;
+		ft_printf("Total movements : %d\n", ptr->movements);
+		if (ptr->coin == ptr->maxcoin && ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
+			exit(1);
 	}
-	if (keycode == 65363) // DROITE
+	if (keycode == 65363 && (ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj) + 1] != '1')) // DROITE
 	{
-		if (ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj) + 1] != '1')
+		if (ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj) + 1] == 'C')
 		{
-			if (ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj) + 1] == 'C')
-			{
-				ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj) + 1] = '0';
-				ptr->coin++;
-				printf("COIN DETECTED\n");
-			}
-		if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj) + 1] == 'E')
-		{
-			if (ptr->coin == ptr->maxcoin)
-				exit(1);
-				//fonctionexit
+			ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj) + 1] = '0';
+			ptr->coin++;
+			ft_printf("Coin collected : %d\n", ptr->coin);
 		}
-		printf("%c\n",ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)]);
 		if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
-		{
-
 			ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./coin.xpm", &ptr->img_width, &ptr->img_height);
-		}
-
 		mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
 		ptr->newposj =ptr->newposj + 1 ;
 		ft_search_char(ptr);
-		}
+		ptr->movements++;
+		ft_printf("Total movements : %d\n", ptr->movements);
+		if (ptr->coin == ptr->maxcoin && ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
+			exit(1);
 	}
-	if (keycode == 65364) // EN BAS LA
+	if (keycode == 65364 && (ptr->map[(ptr->i + ptr->newposi + 1)][ptr->j + ptr->newposj] != '1')) // EN BAS LA
 	{
-		if (ptr->map[(ptr->i + ptr->newposi + 1)][ptr->j + ptr->newposj] != '1')
+		if (ptr->map[(ptr->i + ptr->newposi + 1)][ptr->j + ptr->newposj] == 'C')
 		{
-			if (ptr->map[(ptr->i + ptr->newposi + 1)][ptr->j + ptr->newposj] == 'C')
-			{
-				ptr->map[(ptr->i + ptr->newposi + 1)][ptr->j + ptr->newposj] = '0';
-				ptr->coin++;
-				printf("COIN DETECTED\n");
-			}
-		if(ptr->map[(ptr->i + ptr->newposi + 1)][ptr->j + ptr->newposj] == 'E')
-		{
-			if (ptr->coin == ptr->maxcoin)
-				exit(1);
-				//fonctionexit
+			ptr->map[(ptr->i + ptr->newposi + 1)][ptr->j + ptr->newposj] = '0';
+			ptr->coin++;
+			ft_printf("Coin collected : %d\n", ptr->coin);
 		}
 		if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
 			ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./coin.xpm", &ptr->img_width, &ptr->img_height);
 		mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
 		ptr->newposi =ptr->newposi + 1 ;
 		ft_search_char(ptr);
-		}
+		ptr->movements++;
+		ft_printf("Total movements : %d\n", ptr->movements);
+		if (ptr->coin == ptr->maxcoin && ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
+			exit(1);
 	}
-	if (keycode == 65362) // HAUT
+	if (keycode == 65362  && (ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] != '1')) // HAUT
 	{
-		if (ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] != '1')
+		
+		if (ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] == 'C')
 		{
-			if (ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] == 'C')
-			{
-				ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] = '0';
-				ptr->coin++;
-				printf("COIN DETECTED\n");
-			}
-		if(ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] == 'E')
-		{
-			if (ptr->coin == ptr->maxcoin)
-				exit(1);
-				//fonctionexit
+			ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] = '0';
+			ptr->coin++;
+			ft_printf("Coin collected : %d\n", ptr->coin);
 		}
 		if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
 			ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./coin.xpm", &ptr->img_width, &ptr->img_height);
-		
 		mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
 		ptr->newposi =ptr->newposi - 1 ;
 		ft_search_char(ptr);
-		}
+		ptr->movements++;
+		ft_printf("Total movements : %d\n", ptr->movements);
+		if (ptr->coin == ptr->maxcoin && ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
+			exit(1);
 	}
-	
 	return (0);
 }
 
 int main(int ac, char **av)
 {
-	//t_data data;
-//	int i = 0;
-//	int j;
 	t_data	*ptr;
-
 
 	if (ac != 2)
 		return (0);
@@ -146,7 +103,4 @@ int main(int ac, char **av)
 	put_win(ptr);
 	mlx_hook(ptr->winptr, 2, 1L<<0, putchr, ptr);
 	mlx_loop(ptr->ptr);
-//ft_printf("x");
-//	ft_printf("%p", ptr.perso);
-
 }

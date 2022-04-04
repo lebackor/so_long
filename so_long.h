@@ -33,6 +33,7 @@ typedef struct s_data{
     void    *perso;
     int     newposj;
     int     newposi;
+    int     movements;
 
 } t_data;
 
