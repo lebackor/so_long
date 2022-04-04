@@ -6,6 +6,7 @@ void    put_win(t_data ptr, char *av)
 
   //  void    *img;
 //	t_data	i;
+//	t_data *pt;
 
 	ptr.i = 0;
 	ptr.map = ft_fill_map(av);
@@ -15,13 +16,16 @@ void    put_win(t_data ptr, char *av)
 //	ptr.img = mlx_new_image(ptr.ptr, 1980, 800);
 //	ptr.addr = mlx_get_data_addr(ptr.img, &ptr.bits_per_pixel, &ptr.line_length,
 //								&ptr.endian);
+//	pt = &ptr;
 	put_floor(ptr);
 	ptr.perso = ft_search_char(ptr);
 	//ft_printf("%p", ptr.perso);
 	ft_search_collec(ptr);
 	ft_search_exit(ptr);
 	mlx_hook(ptr.winptr, 2, 1L<<0, putchr, &ptr);
-		///ft_printf("%p", ptr->ptr);
+	//mlx_put_image_to_window(ptr.ptr, ptr.winptr, ptr.img, (1 * 50) , (1 * 50));
+	//if (!&ptr.img)
+	//	ft_printf("%p", ptr.ptr);
 	//free(ptr.map);
 }
 

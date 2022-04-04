@@ -5,6 +5,22 @@ int	putchr(int keycode, t_data *ptr)
 {
 	if (!keycode)
 		ft_printf("y pas wesh");
+
+    ptr->relative_path = "./itachi.xpm";
+	ptr->img_height = 0;
+	ptr->img_width = 0;
+
+	ptr->img = mlx_xpm_file_to_image(&ptr->ptr, ptr->relative_path, &ptr->img_width, &ptr->img_height);
+
+	mlx_put_image_to_window(&ptr->ptr, ptr->winptr, ptr->img, (1 * 50) , (1 * 50));
+
+	return (0);
+}
+/*
+int	putchr(int keycode, t_data *ptr)
+{
+	if (!keycode)
+		ft_printf("y pas wesh");
 	t_data	pt;
 //	(void) ptr;
 //	(void) pt;
@@ -14,18 +30,19 @@ int	putchr(int keycode, t_data *ptr)
 	//ft_printf("%p", &ptr->winptr);
 	pt.img_height = 0;
 	pt.img_width = 0;
-	ft_printf("e");
+	if (!&ptr->winptr)
+		ft_printf("e");
 	ptr->img = mlx_xpm_file_to_image(&ptr->ptr, pt.relative_path, &pt.img_width, &pt.img_height);
-	ft_printf("%p ", ptr->perso);
-	//mlx_put_image_to_window(ptr->ptr, &ptr->winptr, ptr->img, (1 * 50) , (1 * 50));
-	mlx_destroy_image(&ptr->ptr, ptr->perso);
+	//ft_printf("%p ", ptr->perso);
+	mlx_put_image_to_window(&ptr->ptr, &ptr->winptr, ptr->img, (1 * 50) , (1 * 50));
+	//mlx_destroy_image(&ptr->ptr, ptr->perso);
     //printf("%p", &ptr->winptr);
 	//mlx_destroy_window(&ptr->ptr, &ptr->winptr);
-	ft_printf("e");
+	ft_printf("=x");
 	
 	return (0);
 }
-
+*/
 int main(int ac, char **av)
 {
 	//t_data data;
