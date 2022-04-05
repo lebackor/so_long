@@ -40,7 +40,7 @@ int check_pec(char **str)
         }
         i.i++;
     }
-    if (i.y == 1 && i.x >= 1 && i.width >= 1)
+    if (i.y == 1 && i.x >= 1 && i.width == 1)
         return (1);
     return (0);
 }

@@ -58,5 +58,11 @@ void    ft_search_wall(t_data *ptr);
 void    ft_search_exit(t_data *ptr);
 void    ft_put_exit(t_data *ptr, t_data *win);
 int	putchr(int keycode, t_data *ptr);
-
+void    left(t_data *ptr);
+void    right(t_data *ptr);
+void    up(t_data *ptr);
+void    down(t_data *ptr);
+int	putchr(int keycode, t_data *ptr);
+int    ft_exit(t_data *ptr);
+void    ft_free_data(t_data *ptr);
 #endif

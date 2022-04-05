@@ -18,6 +18,9 @@ void	put_floor(t_data *ptr)
 	ptr->img_height = 0;
 	ptr->img_width = 0;
 	ptr->img = mlx_xpm_file_to_image(ptr->ptr, ptr->relative_path, &ptr->img_width, &ptr->img_height);
+//	ft_printf("%p", ptr->img);
+	if (!&ptr->img)
+		ft_exit(ptr);
 	mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, 0, 0);
 	while(ptr->j < ptr->y * 100)
 	{	

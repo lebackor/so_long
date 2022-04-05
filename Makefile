@@ -5,6 +5,8 @@ SRCS	=	so_long.c\
 			windowsnstuff.c\
 			searching.c\
 			puting.c\
+			cleaning.c\
+			keycodes.c\
 
 
 OBJS = ${SRCS:.c=.o}
@@ -19,11 +21,16 @@ NAME = so_long
 
 LIBFT = libft/libft.a
 
+MLX = 	make -C minilibx-linux
+
 CLEAN_FT	=	make fclean -C libft
+
+CLEAN_MLX	=	make clean -C minilibx-linux
 
 all : ${NAME}
 
 ${NAME} :	${OBJS} $(LIBFT)
+	$(MLX)
 	@$(MAKE) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) ${MLXFLAG} $(LDFLAGS)  -o $@
 	@echo "Ca arrive..."
@@ -35,10 +42,10 @@ ${NAME} :	${OBJS} $(LIBFT)
 $(LIBFT)	:
 	@make -C libft
 
-
 clean :
 		rm -f ${OBJS} ${LIBFT} 
 		${CLEAN_FT}
+		${CLEAN_MLX}
 
 fclean :	clean
 			rm -f ${NAME}
