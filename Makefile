@@ -13,7 +13,7 @@ OBJS = ${SRCS:.c=.o}
 
 CC	=	gcc
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 LDFLAGS = -L libft -lft
 MLXFLAG	=	-L minilibx-linux -lmlx -lXext -lX11
 

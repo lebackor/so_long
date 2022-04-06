@@ -8,10 +8,16 @@ int	check_legit_map(char *av)
   //  map.j = 0;
     map.map = ft_fill_map(av);
     if (!check_maplines(map.map))
+    {
+        ft_free_table(map.map);
         return (0);
+    }
     map.len = ft_strlendouble(map.map) - 1;
     if (!check_legit_map2(map) || !check_legit_map1(map) || !check_pec(map.map))
+ {
+     ft_free_table(map.map);
         return (0);
+}
     ft_free_table(map.map);
     return (1);
 }
@@ -49,6 +55,29 @@ int check_legit_map2(t_data map)
     {
         if (map.map[map.j][map.i] != '1')
             return (0);
+        map.j++;
+    }
+    if (check_legit_map3(map))
+        return (1);
+    return (0);
+}
+
+int check_legit_map3(t_data map)
+{
+    map.j = 1;
+
+    while (map.j < map.len - 1)
+    {
+        map.i = 1;
+        while (map.i < ft_strlenindouble(map.map, 0) - 2)
+        {
+            if (map.map[map.j][map.i] != '0' && map.map[map.j][map.i] != 'P'
+                && map.map[map.j][map.i] != 'E' && map.map[map.j][map.i] != 'C'
+                && map.map[map.j][map.i] != '1')
+                return (0);
+   //         ft_printf("%c ", map.map[map.j][map.i]);
+            map.i++;
+        }
         map.j++;
     }
     return (1);

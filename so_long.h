@@ -11,6 +11,11 @@ typedef struct s_data{
     void    *ptr;
     void    *winptr;
     void    *img;
+    void    *chr;
+    void    *wall;
+    void    *piece;
+    void    *exit;
+    void    *sol;
     int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -49,8 +54,8 @@ int check_pec(char **str);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void    put_win(t_data *ptr);
 void	put_floor(t_data *ptr);
-void    *ft_search_char(t_data *ptr);
-void    *ft_put_chr(t_data *ptr, t_data *win);
+void    ft_search_char(t_data *ptr);
+void    ft_put_chr(t_data *ptr, t_data *win);
 void    ft_put_wall1(t_data *ptr, t_data *win);
 void    ft_put_collec(t_data *ptr, t_data *win);
 void    ft_search_collec(t_data *ptr);
@@ -65,4 +70,5 @@ void    down(t_data *ptr);
 int	putchr(int keycode, t_data *ptr);
 int    ft_exit(t_data *ptr);
 void    ft_free_data(t_data *ptr);
+int check_legit_map3(t_data map);
 #endif

@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void    *ft_search_char(t_data *ptr)
+void    ft_search_char(t_data *ptr)
 {
     t_data  pt;
 
@@ -22,7 +22,6 @@ void    *ft_search_char(t_data *ptr)
         }
         pt.i++;
     }
-    return (NULL);
 }
 
 void    ft_search_collec(t_data *ptr)
