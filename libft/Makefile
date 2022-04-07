@@ -73,14 +73,14 @@ NAME = libft.a
 
 
 .c.o:
-		@${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
+		${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
 
 all : ${NAME}
 
 
 ${NAME} :	${OBJS}
-			@ar rc ${NAME} ${OBJS}
-			@ranlib ${NAME}
+		ar rc ${NAME} ${OBJS}
+		ranlib ${NAME}
 
 clean :
 		rm -f ${OBJS}

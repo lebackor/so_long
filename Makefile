@@ -13,7 +13,7 @@ OBJS = ${SRCS:.c=.o}
 
 CC	=	gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 LDFLAGS = -L libft -lft
 MLXFLAG	=	-L minilibx-linux -lmlx -lXext -lX11
 
@@ -30,7 +30,6 @@ CLEAN_MLX	=	make clean -C minilibx-linux
 all : ${NAME}
 
 ${NAME} :	${OBJS} $(LIBFT)
-	$(MLX)
 	@$(MAKE) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) ${MLXFLAG} $(LDFLAGS)  -o $@
 	@echo "Ca arrive..."

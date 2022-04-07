@@ -8,9 +8,11 @@ void    ft_put_chr(t_data *ptr, t_data *win)
 	
 	ptr->img_height = 0;
 	ptr->img_width = 0;
+//	if (ptr->chr)
+//		free(ptr->chr);
 	ptr->chr = mlx_xpm_file_to_image(win->ptr, ptr->relative_path, &ptr->img_width, &ptr->img_height);
-
 	mlx_put_image_to_window(win->ptr, win->winptr, ptr->chr, ((ptr->j + win->newposj) * 50) , ((ptr->i + win->newposi) * 50));
+	free(ptr->chr);
 }
 
 void    ft_put_collec(t_data *ptr, t_data *win)
@@ -21,6 +23,7 @@ void    ft_put_collec(t_data *ptr, t_data *win)
 
 	ptr->piece = mlx_xpm_file_to_image(win->ptr, ptr->relative_path, &ptr->img_width, &ptr->img_height);
 	mlx_put_image_to_window(win->ptr, win->winptr, ptr->piece, (ptr->j * 50) , (ptr->i * 50));
+	free(ptr->piece);
 	return ;
 }
 
@@ -35,6 +38,7 @@ void    ft_put_wall1(t_data *ptr, t_data *win)
 
 	ptr->wall = mlx_xpm_file_to_image(win->ptr, ptr->relative_path, &ptr->img_width, &ptr->img_height);
 	mlx_put_image_to_window(win->ptr, win->winptr, ptr->wall, (ptr->j * 50)   , (ptr->i * 50) );
+	free(ptr->wall);
 	return ;
 }
 
@@ -54,6 +58,7 @@ void    ft_search_wall(t_data *ptr)
 		}
         pt.i++;
     }
+	free(ptr->wall);
     return ;
 }
 void    ft_put_exit(t_data *ptr, t_data *win)
@@ -65,4 +70,5 @@ void    ft_put_exit(t_data *ptr, t_data *win)
 	//ft_printf("%d %d", ptr->i, ptr->j);
 	ptr->exit = mlx_xpm_file_to_image(win->ptr, ptr->relative_path, &ptr->img_width, &ptr->img_height);
 	mlx_put_image_to_window(win->ptr, win->winptr, ptr->exit, (ptr->j * 50) , (ptr->i * 50));
+	free(ptr->exit);
 }

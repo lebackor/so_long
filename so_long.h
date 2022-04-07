@@ -35,7 +35,7 @@ typedef struct s_data{
     char	*relative_path;
     int		img_width ;
 	int		img_height;
-    void    *perso;
+ //   void    *perso;
     int     newposj;
     int     newposi;
     int     movements;

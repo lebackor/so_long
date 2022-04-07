@@ -17,18 +17,16 @@ void	put_floor(t_data *ptr)
 	ptr->img_height = 0;
 	ptr->img_width = 0;
 	ptr->sol = mlx_xpm_file_to_image(ptr->ptr, ptr->relative_path, &ptr->img_width, &ptr->img_height);
-//	ft_printf("%p", ptr->img);
-	if (!&ptr->sol)
-		ft_exit(ptr);
-	mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->sol, 0, 0);
 	while(ptr->j < ptr->y * 100)
 	{	
 		ptr->x = 0;
 		while (ptr->x < ptr->i * 100)
 		{
-			mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->sol, ptr->x, ptr->j);
+			mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->sol, ptr->x, ptr->j);		
 			ptr->x = ptr->x + 50;
+			
 		}
 		ptr->j = ptr->j + 50;
 	}
+
 }

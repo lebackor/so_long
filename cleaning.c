@@ -6,7 +6,23 @@ int    ft_exit(t_data *ptr)
     if (ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E' && ptr->coin == ptr->maxcoin)
         ft_printf("YOU WIN\n");
    
-    ft_free_data(ptr);
+  //  ft_free_data(ptr);
+    //mlx_destroy_image(ptr->ptr, ptr->piece);
+    
+    free(ptr->chr);  
+  // mlx_destroy_image(&ptr->ptr, ptr->exit);
+    free(ptr->exit);
+   free(ptr->wall);
+   free(ptr->piece);
+   free(ptr->sol);
+   ft_free_table(ptr->map);
+   free(ptr);
+    //mlx_destroy_image(ptr->ptr, ptr->wall);
+    //mlx_destroy_image(ptr->ptr, ptr->piece);
+    //mlx_destroy_image(ptr->ptr, ptr->sol);
+    //mlx_destroy_window(ptr->ptr, ptr->winptr);
+   // mlx_destroy_display(ptr->ptr);
+
     exit(1);
 }
 
@@ -20,16 +36,6 @@ void    ft_free_data(t_data *ptr)
         free(ptr->str);
     if(ptr->map)
         ft_free_table(ptr->map);
-    if (ptr->exit)
-        mlx_destroy_image(ptr->ptr, ptr->exit);
-    if (ptr->chr)
-        mlx_destroy_image(ptr->ptr, ptr->chr);
-   if (ptr->piece)
-        mlx_destroy_image(ptr->ptr, ptr->piece);    
-    if (ptr->wall)
-        mlx_destroy_image(ptr->ptr, ptr->wall);
-    if (ptr->sol)
-        mlx_destroy_image(ptr->ptr, ptr->sol);
      ft_printf("e");
   //  free(ptr);
   //  if (ptr->relative_path)

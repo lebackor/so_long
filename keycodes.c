@@ -14,6 +14,7 @@ int	putchr(int keycode, t_data *ptr)
         down(ptr);
 	if ((keycode == 65362 || keycode == 119) && (ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] != '1')) // HAUT
         up(ptr);
+	free(ptr->img);
 	return (0);
 }
 
@@ -26,7 +27,10 @@ void    left(t_data *ptr)
 		ft_printf("Coin collected : %d\n", ptr->coin);
 	}
 	if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
+	{
+		free(ptr->img);	
 		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm", &ptr->img_width, &ptr->img_height);
+	}
 	mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
 	ptr->newposj =ptr->newposj - 1 ;
 	ft_search_char(ptr);
@@ -44,7 +48,10 @@ void    right(t_data *ptr)
 		ft_printf("Coin collected : %d\n", ptr->coin);
 	}
 	if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
+	{
+		free(ptr->img);
 		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm", &ptr->img_width, &ptr->img_height);
+	}
 	mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
 	ptr->newposj =ptr->newposj + 1 ;
 	ft_search_char(ptr);
@@ -62,7 +69,10 @@ void    up(t_data *ptr)
 		ft_printf("Coin collected : %d\n", ptr->coin);
 	}
 	if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
+	{
+		free(ptr->img);
 		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm", &ptr->img_width, &ptr->img_height);
+	}
 	mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
 	ptr->newposi =ptr->newposi - 1 ;
 	ft_search_char(ptr);
@@ -80,7 +90,10 @@ void    down(t_data *ptr)
 		ft_printf("Coin collected : %d\n", ptr->coin);
 	}
 	if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
+	{
+		free(ptr->img);
 		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm", &ptr->img_width, &ptr->img_height);
+	}
 	mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
 	ptr->newposi =ptr->newposi + 1 ;
 	ft_search_char(ptr);

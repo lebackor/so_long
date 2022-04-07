@@ -32,4 +32,25 @@ char	*ft_strdup(char *s1)
 	}
 	s2[i] = '\0';
 	return (s2);
+}/*
+char	*ft_strdup(char *src)
+{
+	char	*dest;
+	int		i;
+
+	i = 0;
+	if (!src)
+		return (NULL);
+	dest = malloc(sizeof(dest) * ft_strlen(src) + 1);
+	if (!(dest))
+		return (NULL);
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
+
+*/

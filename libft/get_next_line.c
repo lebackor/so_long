@@ -49,14 +49,14 @@ char	*str_n(char *str, char *buffer, char *new_line, int i)
 		{
 			free(buffer);
 			free(new_line);
-			free(str);
+		//	free(str);
 			return (NULL);
 		}
 		*str = '\0';
 		free(buffer);
 		return (new_line);
 	}
-	free(str);
+	//free(str);
 	free(buffer);
 	free(new_line);
 	return (NULL);
