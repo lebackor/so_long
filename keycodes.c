@@ -14,7 +14,7 @@ int	putchr(int keycode, t_data *ptr)
         down(ptr);
 	if ((keycode == 65362 || keycode == 119) && (ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] != '1')) // HAUT
         up(ptr);
-	free(ptr->img);
+	//free(ptr->img);
 	return (0);
 }
 

@@ -62,6 +62,7 @@ SRCS	=	ft_bzero.c \
 			ft_putnbr.c\
 			ft_printf_utils.c\
 			ft_putstr.c\
+			ft_strcmp.c\
 			
 OBJS	=	${SRCS:.c=.o}
 
