@@ -48,15 +48,17 @@ char	*str_n(char *str, char *buffer, char *new_line, int i)
 		if (*str == '\0' && *new_line == '\0')
 		{
 			free(buffer);
+			ft_printf("e\n");
 			free(new_line);
 		//	free(str);
 			return (NULL);
 		}
+		else
+			free(buffer);
 		*str = '\0';
-		free(buffer);
+	//	free(str);
 		return (new_line);
 	}
-	//free(str);
 	free(buffer);
 	free(new_line);
 	return (NULL);
@@ -65,13 +67,13 @@ char	*str_n(char *str, char *buffer, char *new_line, int i)
 char	*get_next_line(int fd)
 {
 	int				i;
-	static char		*str;
+	static char		*str = 0;
 	char			*buffer;
 	char			*new_line;
 
 	i = 1;
 	if (!str)
-		str = malloc(sizeof(str) * (BUFFER_SIZE + 1));
+		str = malloc(sizeof(*str) * (BUFFER_SIZE + 1));	
 	buffer = malloc(sizeof(buffer) * (BUFFER_SIZE + 1));
 	new_line = ft_strdup(str);
 	while (ft_search_n(new_line) && i > 0)

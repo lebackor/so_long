@@ -45,7 +45,14 @@ int main(int ac, char **av)
 	if (!ft_check_point(av[1]) || !check_legit_map(av[1]))
 		return (ft_printf("Error\n"));
 	ptr = malloc(sizeof(t_data));
+	*ptr = (t_data){0};
 	random1(ptr, av[1]);
+	ptr->relative_path = "./itachi.xpm";
+	ptr->exit = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm", &ptr->img_width, &ptr->img_height);
+	ptr->sol = mlx_xpm_file_to_image(ptr->ptr, "./grass.xpm", &ptr->img_width, &ptr->img_height);
+	ptr->wall = mlx_xpm_file_to_image(ptr->ptr, "./tree.xpm", &ptr->img_width, &ptr->img_height);
+	ptr->piece = mlx_xpm_file_to_image(ptr->ptr, "./coin.xpm", &ptr->img_width, &ptr->img_height);
+	//ptr->chr = mlx_xpm_file_to_image(ptr->ptr,ptr->relative_path , &ptr->img_width, &ptr->img_height);
 	put_win(ptr);
 	mlx_hook(ptr->winptr, 2, 1L<<0, putchr, ptr);
 	mlx_hook(ptr->winptr, 17, 1L<<0, ft_exit, ptr);

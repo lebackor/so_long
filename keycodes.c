@@ -2,6 +2,7 @@
 
 int	putchr(int keycode, t_data *ptr)
 {
+//	printf("%p\n", ptr->exit);
     if (keycode == 65307)
         ft_exit(ptr);
   // ft_printf("%d", keycode);
@@ -14,7 +15,11 @@ int	putchr(int keycode, t_data *ptr)
         down(ptr);
 	if ((keycode == 65362 || keycode == 119) && (ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] != '1')) // HAUT
         up(ptr);
-	//free(ptr->img);
+	else
+	{	
+		mlx_destroy_image(ptr->ptr, ptr->img);
+		ptr->img = NULL;
+	}
 	return (0);
 }
 

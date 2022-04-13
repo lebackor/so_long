@@ -12,11 +12,7 @@ void    put_win(t_data *ptr)
 
 void	put_floor(t_data *ptr)
 {
-	ptr->relative_path = "./grass.xpm";
 	ptr->j = 0;
-	ptr->img_height = 0;
-	ptr->img_width = 0;
-	ptr->sol = mlx_xpm_file_to_image(ptr->ptr, ptr->relative_path, &ptr->img_width, &ptr->img_height);
 	while(ptr->j < ptr->y * 100)
 	{	
 		ptr->x = 0;
