@@ -15,8 +15,8 @@ int	putchr(int keycode, t_data *ptr)
         down(ptr);
 	if ((keycode == 65362 || keycode == 119) && (ptr->map[(ptr->i + ptr->newposi - 1)][ptr->j + ptr->newposj] != '1')) // HAUT
         up(ptr);
-	else
-	{	
+	if (ptr->img)
+	{
 		mlx_destroy_image(ptr->ptr, ptr->img);
 		ptr->img = NULL;
 	}
@@ -33,7 +33,8 @@ void    left(t_data *ptr)
 	}
 	if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
 	{
-		free(ptr->img);	
+		mlx_destroy_image(ptr->ptr, ptr->img);
+		ptr->img = NULL;
 		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm", &ptr->img_width, &ptr->img_height);
 	}
 	mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
@@ -54,7 +55,8 @@ void    right(t_data *ptr)
 	}
 	if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
 	{
-		free(ptr->img);
+		mlx_destroy_image(ptr->ptr, ptr->img);
+		ptr->img = NULL;
 		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm", &ptr->img_width, &ptr->img_height);
 	}
 	mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
@@ -75,7 +77,8 @@ void    up(t_data *ptr)
 	}
 	if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
 	{
-		free(ptr->img);
+		mlx_destroy_image(ptr->ptr, ptr->img);
+		ptr->img = NULL;
 		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm", &ptr->img_width, &ptr->img_height);
 	}
 	mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);
@@ -96,7 +99,8 @@ void    down(t_data *ptr)
 	}
 	if(ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E')
 	{
-		free(ptr->img);
+		mlx_destroy_image(ptr->ptr, ptr->img);
+		ptr->img = NULL;
 		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm", &ptr->img_width, &ptr->img_height);
 	}
 	mlx_put_image_to_window(ptr->ptr, ptr->winptr, ptr->img, (ptr->j + ptr->newposj) * 50, (ptr->i + ptr->newposi) * 50);

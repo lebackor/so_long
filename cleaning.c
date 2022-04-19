@@ -63,7 +63,7 @@ void    ft_free_data(t_data *ptr)
         free(ptr->str);
     if(ptr->map)
         ft_free_table(ptr->map);
-     ft_printf("e");
+     ft_printf("x");
   //  free(ptr);
   //  if (ptr->relative_path)
     //    free(ptr->relative_path);

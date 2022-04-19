@@ -75,7 +75,6 @@ int check_legit_map3(t_data map)
                 && map.map[map.j][map.i] != 'E' && map.map[map.j][map.i] != 'C'
                 && map.map[map.j][map.i] != '1')
                 return (0);
-   //         ft_printf("%c ", map.map[map.j][map.i]);
             map.i++;
         }
         map.j++;
@@ -90,7 +89,6 @@ char **ft_fill_map(char *av)
 	t_data fd;
 
 	j = 0;
-//    fd.i = 0;
 	fd.i = get_len_file(av);
 	//str = ft_calloc(fd.i, sizeof(char *));
 	str = malloc(sizeof(char *) * (fd.i + 1));
@@ -98,7 +96,6 @@ char **ft_fill_map(char *av)
 	while (j < fd.i)
 	{
 		str[j] = get_next_line(fd.fd);
-		//printf("%s\n", str[j]);
 		j++;
 	}
     str[j] = NULL;
@@ -115,14 +112,14 @@ int	get_len_file(char *av)
 	i = 0;
 	fd.fd = open(av, O_RDONLY);
     fd.str = get_next_line(fd.fd);
-	while (fd.str != NULL)
+    while (fd.str != NULL)
 	{
         //if (fd.str)
 		free(fd.str);
 		fd.str = get_next_line(fd.fd);
 		i++;
 	}
-    free(fd.str);
+    free(fd.str);    
 	close(fd.fd);
 	return (i);
 }

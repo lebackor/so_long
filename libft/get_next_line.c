@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 int	ft_search_n(char *new_line)
 {
 	int	i;
@@ -48,14 +48,12 @@ char	*str_n(char *str, char *buffer, char *new_line, int i)
 		if (*str == '\0' && *new_line == '\0')
 		{
 			free(buffer);
-			ft_printf("e\n");
 			free(new_line);
-		//	free(str);
+			//str = '\0';
 			return (NULL);
 		}
-		else
-			free(buffer);
-		*str = '\0';
+		free(buffer);
+		*str++ = '\0';
 	//	free(str);
 		return (new_line);
 	}
@@ -63,19 +61,11 @@ char	*str_n(char *str, char *buffer, char *new_line, int i)
 	free(new_line);
 	return (NULL);
 }
-
-char	*get_next_line(int fd)
-{
-	int				i;
-	static char		*str = 0;
-	char			*buffer;
-	char			*new_line;
+char 	*ft_lol(char *new_line, char *buffer, char *str, int fd)
+{	
+	int i;
 
 	i = 1;
-	if (!str)
-		str = malloc(sizeof(*str) * (BUFFER_SIZE + 1));	
-	buffer = malloc(sizeof(buffer) * (BUFFER_SIZE + 1));
-	new_line = ft_strdup(str);
 	while (ft_search_n(new_line) && i > 0)
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
@@ -85,6 +75,28 @@ char	*get_next_line(int fd)
 			return (str_n(str, buffer, new_line, i));
 		buffer[i] = '\0';
 		new_line = ft_strjoin(new_line, buffer);
+	}
+	return new_line;
+}
+
+char	*get_next_line(int fd)
+{
+	static char		*str = 0;
+	char			*buffer;
+	char			*new_line;
+
+	if (!str)
+	{
+		str = malloc(sizeof(*str) * (BUFFER_SIZE + 1));
+		*str = 0;
+	}
+	buffer = malloc(sizeof(*buffer) * (BUFFER_SIZE + 1));
+	new_line = ft_strdup(str);
+	new_line = ft_lol(new_line, buffer, str, fd);
+	if (!new_line)	
+	{
+		*str = 0;
+		return (NULL);
 	}
 	new_line = str_endcpy(str, new_line);
 	free(buffer);

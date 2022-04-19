@@ -7,7 +7,10 @@ void    ft_put_chr(t_data *ptr, t_data *win)
     if((win->map[win->i + win->newposi][(win->j + win->newposj)] == 'E'))
 	{
 		if (win->chr) //
+		{
 			mlx_destroy_image(win->ptr, win->chr);
+			win->chr = NULL;
+		}
 		win->relative_path = "./itachi1.xpm";
 		win->chr = mlx_xpm_file_to_image(win->ptr, win->relative_path, &ptr->img_width, &ptr->img_height);
 	}
