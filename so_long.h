@@ -38,6 +38,8 @@ typedef struct s_data{
     int     newposj;
     int     newposi;
     int     movements;
+    int sumposi;
+    int sumposj;
 
 } t_data;
 
@@ -70,4 +72,16 @@ int	putchr(int keycode, t_data *ptr);
 int    ft_exit(t_data *ptr);
 void    ft_free_data(t_data *ptr);
 int check_legit_map3(t_data map);
+char	*del_b(char *str);
+char	*del_a(char *str);
+char	*ft_read(char *before, int fd);
+char	*get_next_line(int fd);
+int	ft_check(char *str);
+int	ft2_strlen(char *str);
+char	*freenquit(char *free1, char *free2, char *rtn);
+char	*ft2_strdup(char *str);
+char	*strmcat(char *s1, char *s2);
+int ft_texture(t_data *ptr, void *pt, int q);
+void	ft_lol(t_data *x, void *ptr);
+void    ft_left_or_right(int keycode, t_data *ptr);
 #endif

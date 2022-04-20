@@ -7,6 +7,8 @@ SRCS	=	so_long.c\
 			puting.c\
 			cleaning.c\
 			keycodes.c\
+			get_next_line.c\
+			get_next_line_utils.c\
 
 
 OBJS = ${SRCS:.c=.o}

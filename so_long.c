@@ -1,8 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lebackor <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/20 01:43:51 by lebackor          #+#    #+#             */
+/*   Updated: 2022/04/20 01:43:55 by lebackor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "so_long.h"
+
 void	random1(t_data *ptr, char *av)
 {
 	ptr->ptr = mlx_init();
+	if (!ptr->ptr)
+	{
+		ft_printf("Error\n");
+		ft_exit(ptr);
+	}
 	ptr->i = 0;
 	ptr->coin = 0;
 	ptr->map = ft_fill_map(av);
@@ -16,13 +33,11 @@ void	random1(t_data *ptr, char *av)
 
 int	ft_check_point(char *av)
 {
-	int fd;
+	int	fd;
 	int	i;
 
 	i = 0;
 	fd = open(av, O_RDONLY);
-	//ft_printf("%d", fd);
-
 	if (fd < 0)
 		return (0);
 	close(fd);
@@ -35,7 +50,39 @@ int	ft_check_point(char *av)
 	return (1);
 }
 
-int main(int ac, char **av)
+void	ft_lol(t_data *x, void *ptr)
+{
+	if (!ptr)
+	{
+		ft_printf("Error\n");
+		ft_exit(x);
+	}
+}
+
+int	ft_texture(t_data *ptr, void *pt, int q)
+{
+	if (q == 1)
+		ft_lol(ptr, pt);
+	ptr->exit = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm",
+			&ptr->img_width, &ptr->img_height);
+	if (!ptr->exit)
+		ft_lol(ptr, ptr->exit);
+	ptr->sol = mlx_xpm_file_to_image(ptr->ptr, "./grass.xpm",
+			&ptr->img_width, &ptr->img_height);
+	if (!ptr->sol)
+		ft_lol(ptr, ptr->sol);
+	ptr->wall = mlx_xpm_file_to_image(ptr->ptr, "./tree.xpm",
+			&ptr->img_width, &ptr->img_height);
+	if (!ptr->wall)
+		ft_lol(ptr, ptr->wall);
+	ptr->piece = mlx_xpm_file_to_image(ptr->ptr, "./coin.xpm",
+			&ptr->img_width, &ptr->img_height);
+	if (!ptr->piece)
+		ft_lol(ptr, ptr->piece);
+	return (1);
+}
+
+int	main(int ac, char **av)
 {
 	t_data	*ptr;
 
@@ -45,16 +92,17 @@ int main(int ac, char **av)
 	if (!ft_check_point(av[1]) || !check_legit_map(av[1]))
 		return (ft_printf("Error\n"));
 	ptr = malloc(sizeof(t_data));
+	if (!ptr)
+	{
+		ft_printf("Error\n");
+		ft_exit(ptr);
+	}
 	*ptr = (t_data){0};
 	random1(ptr, av[1]);
 	ptr->relative_path = "./itachi.xpm";
-	ptr->exit = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm", &ptr->img_width, &ptr->img_height);
-	ptr->sol = mlx_xpm_file_to_image(ptr->ptr, "./grass.xpm", &ptr->img_width, &ptr->img_height);
-	ptr->wall = mlx_xpm_file_to_image(ptr->ptr, "./tree.xpm", &ptr->img_width, &ptr->img_height);
-	ptr->piece = mlx_xpm_file_to_image(ptr->ptr, "./coin.xpm", &ptr->img_width, &ptr->img_height);
-	//ptr->chr = mlx_xpm_file_to_image(ptr->ptr,ptr->relative_path , &ptr->img_width, &ptr->img_height);
+	ft_texture(ptr, NULL, 0);
 	put_win(ptr);
-	mlx_hook(ptr->winptr, 2, 1L<<0, putchr, ptr);
-	mlx_hook(ptr->winptr, 17, 1L<<0, ft_exit, ptr);
+	mlx_hook(ptr->winptr, 2, 1L << 0, putchr, ptr);
+	mlx_hook(ptr->winptr, 17, 1L << 0, ft_exit, ptr);
 	mlx_loop(ptr->ptr);
 }
