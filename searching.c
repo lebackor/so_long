@@ -76,5 +76,7 @@ void	ft_search_exit(t_data *ptr)
 		}
 		pt.i++;
 	}
+	mlx_destroy_image(ptr->ptr, ptr->exit);
+	ptr->exit = NULL;
 	return ;
 }

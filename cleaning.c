@@ -14,12 +14,14 @@
 
 int	ft_exit(t_data *ptr)
 {
-	mlx_loop_end(ptr->ptr);
-	if (ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)] == 'E'
-	&& ptr->coin == ptr->maxcoin)
+	if (ptr->ptr)
+		mlx_loop_end(ptr->ptr);
+	if (ptr->map && ptr->map[ptr->i + ptr->newposi][(ptr->j + ptr->newposj)]
+	== 'E' && ptr->coin == ptr->maxcoin)
 		ft_printf("YOU W0N\n");
 	ft_free_data(ptr);
-	free(ptr->ptr);
+	if (ptr->ptr)
+		free(ptr->ptr);
 	free(ptr);
 	exit(1);
 }

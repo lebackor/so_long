@@ -75,6 +75,4 @@ void	ft_put_exit(t_data *ptr, t_data *win)
 {
 	mlx_put_image_to_window(win->ptr, win->winptr,
 		win->exit, (ptr->j * 50), (ptr->i * 50));
-	mlx_destroy_image(win->ptr, win->exit);
-	win->exit = NULL;
 }

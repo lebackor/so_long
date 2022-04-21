@@ -17,6 +17,12 @@ int	check_maplines(char **str)
 	t_data	i;
 
 	i.i = 0;
+	if (ft_strlen(*str) == 0)
+	{
+		ft_printf("Error\n");
+		ft_free_table(str);
+		exit(1);
+	}
 	i.j = ft_strlendouble(str);
 	i.len = ft_strlenindouble(str, 0);
 	while (i.i < i.j)
@@ -51,7 +57,7 @@ int	check_pec(char **str)
 		}
 		i.i++;
 	}
-	if (i.y == 1 && i.x >= 1 && i.width == 1)
+	if (i.y == 1 && i.x >= 1 && i.width >= 1)
 		return (1);
 	return (0);
 }

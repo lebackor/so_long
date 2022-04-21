@@ -34,9 +34,9 @@ int	ft_strlenindouble(char **str, int i)
 
 char	**ft_fill_map(char *av)
 {
-    int         j;
-	char		**str;
-	t_data		fd;
+	int		j;
+	char	**str;
+	t_data	fd;
 
 	j = 0;
 	fd.i = get_len_file(av);
@@ -58,7 +58,7 @@ char	**ft_fill_map(char *av)
 
 int	get_len_file(char *av)
 {
-	t_data		fd;
+	t_data	fd;
 	int		i;
 
 	i = 0;

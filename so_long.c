@@ -87,7 +87,7 @@ int	main(int ac, char **av)
 	t_data	*ptr;
 
 	if (ac != 2)
-		return (0);
+		return (ft_printf("Error\n"));
 	ptr = NULL;
 	if (!ft_check_point(av[1]) || !check_legit_map(av[1]))
 		return (ft_printf("Error\n"));
