@@ -46,7 +46,7 @@ char	**ft_fill_map(char *av)
 		ft_printf("Error\n");
 		ft_exit(&fd);
 	}
-	fd.fd = open(av, O_RDONLY);
+	fd.fd = open(av, O_RDONLY | __O_NOFOLLOW);
 	while (j < fd.i)
 	{
 		str[j] = get_next_line(fd.fd);
@@ -62,7 +62,7 @@ int	get_len_file(char *av)
 	int		i;
 
 	i = 0;
-	fd.fd = open(av, O_RDONLY);
+	fd.fd = open(av, O_RDONLY | __O_NOFOLLOW);
 	fd.str = get_next_line(fd.fd);
 	while (fd.str != NULL)
 	{

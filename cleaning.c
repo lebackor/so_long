@@ -22,12 +22,15 @@ int	ft_exit(t_data *ptr)
 	ft_free_data(ptr);
 	if (ptr->ptr)
 		free(ptr->ptr);
-	free(ptr);
+	if (ptr)
+		free(ptr);
 	exit(1);
 }
 
 void	ft_free_data(t_data *ptr)
 {
+	if (!ptr || !ptr->ptr)
+		exit(1);
 	if (ptr->exit)
 		mlx_destroy_image(ptr->ptr, ptr->exit);
 	if (ptr->wall)

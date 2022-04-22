@@ -37,7 +37,7 @@ int	ft_check_point(char *av)
 	int	i;
 
 	i = 0;
-	fd = open(av, O_RDONLY);
+	fd = open(av, O_RDONLY | __O_NOFOLLOW);
 	if (fd < 0)
 		return (0);
 	close(fd);
@@ -63,19 +63,19 @@ int	ft_texture(t_data *ptr, void *pt, int q)
 {
 	if (q == 1)
 		ft_lol(ptr, pt);
-	ptr->exit = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm",
+	ptr->exit = mlx_xpm_file_to_image(ptr->ptr, "./sprites/door.xpm",
 			&ptr->img_width, &ptr->img_height);
 	if (!ptr->exit)
 		ft_lol(ptr, ptr->exit);
-	ptr->sol = mlx_xpm_file_to_image(ptr->ptr, "./grass.xpm",
+	ptr->sol = mlx_xpm_file_to_image(ptr->ptr, "./sprites/grass.xpm",
 			&ptr->img_width, &ptr->img_height);
 	if (!ptr->sol)
 		ft_lol(ptr, ptr->sol);
-	ptr->wall = mlx_xpm_file_to_image(ptr->ptr, "./tree.xpm",
+	ptr->wall = mlx_xpm_file_to_image(ptr->ptr, "./sprites/tree.xpm",
 			&ptr->img_width, &ptr->img_height);
 	if (!ptr->wall)
 		ft_lol(ptr, ptr->wall);
-	ptr->piece = mlx_xpm_file_to_image(ptr->ptr, "./coin.xpm",
+	ptr->piece = mlx_xpm_file_to_image(ptr->ptr, "./sprites/coin.xpm",
 			&ptr->img_width, &ptr->img_height);
 	if (!ptr->piece)
 		ft_lol(ptr, ptr->piece);
@@ -95,11 +95,11 @@ int	main(int ac, char **av)
 	if (!ptr)
 	{
 		ft_printf("Error\n");
-		ft_exit(ptr);
+		return (-1);
 	}
 	*ptr = (t_data){0};
 	random1(ptr, av[1]);
-	ptr->relative_path = "./itachi.xpm";
+	ptr->relative_path = "./sprites/itachi.xpm";
 	ft_texture(ptr, NULL, 0);
 	put_win(ptr);
 	mlx_hook(ptr->winptr, 2, 1L << 0, putchr, ptr);

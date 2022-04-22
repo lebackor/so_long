@@ -14,7 +14,7 @@
 
 void	ft_put_chr(t_data *ptr, t_data *win)
 {
-	win->relative_path = "./itachi.xpm";
+	win->relative_path = "./sprites/itachi.xpm";
 	win->chr = mlx_xpm_file_to_image(win->ptr, win->relative_path,
 			&ptr->img_width, &ptr->img_height);
 	if (!win->chr)
@@ -26,7 +26,7 @@ void	ft_put_chr(t_data *ptr, t_data *win)
 			mlx_destroy_image(win->ptr, win->chr);
 			win->chr = NULL;
 		}
-		win->relative_path = "./itachi1.xpm";
+		win->relative_path = "./sprites/itachi1.xpm";
 		win->chr = mlx_xpm_file_to_image(win->ptr, win->relative_path,
 				&ptr->img_width, &ptr->img_height);
 		if (!win->chr)

@@ -79,8 +79,8 @@ all : ${NAME}
 
 
 ${NAME} :	${OBJS}
-		ar rc ${NAME} ${OBJS}
-		ranlib ${NAME}
+		@ar rc ${NAME} ${OBJS}
+		@ranlib ${NAME}
 
 clean :
 		rm -f ${OBJS}

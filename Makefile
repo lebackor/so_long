@@ -32,7 +32,7 @@ CLEAN_MLX	=	make clean -C minilibx-linux
 all : ${NAME}
 
 ${NAME} :	${OBJS} $(LIBFT)
-	$(MLX)
+	@$(MLX)
 	@$(MAKE) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) ${MLXFLAG} $(LDFLAGS)  -o $@
 	@echo "Ca arrive..."

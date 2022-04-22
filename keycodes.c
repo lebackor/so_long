@@ -16,7 +16,7 @@ int	putchr(int keycode, t_data *ptr)
 {
 	if (keycode == 65307)
 		ft_exit(ptr);
-	ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./grass.xpm",
+	ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./sprites/grass.xpm",
 			&ptr->img_width, &ptr->img_height);
 	if (!ptr->img)
 		ft_lol(ptr, ptr->img);
@@ -49,7 +49,7 @@ void	left(t_data *ptr)
 	{
 		mlx_destroy_image(ptr->ptr, ptr->img);
 		ptr->img = NULL;
-		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm",
+		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./sprites/door.xpm",
 				&ptr->img_width, &ptr->img_height);
 		if (!ptr->img)
 			ft_lol(ptr, ptr->img);
@@ -78,7 +78,7 @@ void	right(t_data *ptr)
 	{
 		mlx_destroy_image(ptr->ptr, ptr->img);
 		ptr->img = NULL;
-		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm",
+		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./sprites/door.xpm",
 				&ptr->img_width, &ptr->img_height);
 		if (!ptr->img)
 			ft_lol(ptr, ptr->img);
@@ -107,7 +107,7 @@ void	up(t_data *ptr)
 	{
 		mlx_destroy_image(ptr->ptr, ptr->img);
 		ptr->img = NULL;
-		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm",
+		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./sprites/door.xpm",
 				&ptr->img_width, &ptr->img_height);
 		if (!ptr->img)
 			ft_lol(ptr, ptr->img);
@@ -136,7 +136,7 @@ void	down(t_data *ptr)
 	{
 		mlx_destroy_image(ptr->ptr, ptr->img);
 		ptr->img = NULL;
-		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./door.xpm",
+		ptr->img = mlx_xpm_file_to_image(ptr->ptr, "./sprites/door.xpm",
 				&ptr->img_width, &ptr->img_height);
 		if (!ptr->img)
 			ft_lol(ptr, ptr->img);
